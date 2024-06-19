@@ -1,2 +1,2 @@
 # templates_repo
-test)reoo
+test-reзo
