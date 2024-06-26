@@ -12,7 +12,7 @@ tags: [kubernetes, container]
 Provision Kubernetes Pods as [Coder workspaces](https://coder.com/docs/v2/latest/workspaces) with this example template.
 
 <!-- TODO: Add screenshot -->
-
+Some new text
 ## Prerequisites
 
 ### Infrastructure
