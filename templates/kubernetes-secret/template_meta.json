@@ -1,1 +1,62 @@
-{"name": "kubernetes-secret", "display_name": "Kubernetes (secret)", "provisioner": "terraform", "description": "Provision Kubernetes Deployments as Coder workspaces", "deprecated": false, "deprecation_message": "", "icon": "/emojis/1f5e8.png", "default_ttl_ms": 86400000, "activity_bump_ms": 3600000, "autostop_requirement": {"days_of_week": [], "weeks": 1}, "autostart_requirement": {"days_of_week": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]}, "created_by_id": "7ee0f745-ba3e-421e-aead-aab10a932b19", "created_by_name": "service-user", "allow_user_autostart": true, "allow_user_autostop": true, "allow_user_cancel_workspace_jobs": false, "failure_ttl_ms": 0, "time_til_dormant_ms": 0, "time_til_dormant_autodelete_ms": 0, "require_active_version": false, "max_port_share_level": "owner", "version": {"archived": false, "message": "", "name": "focused_cori9", "readme": "---\ndisplay_name: Kubernetes (Deployment)\ndescription: Provision Kubernetes Deployments as Coder workspaces\nicon: ../../../site/static/icon/k8s.png\nmaintainer_github: coder\nverified: true\ntags: [kubernetes, container]\n---\n\n# Remote Development on Kubernetes Pods\n\nProvision Kubernetes Pods as [Coder workspaces](https://coder.com/docs/v2/latest/workspaces) with this example template.\n\n<!-- TODO: Add screenshot -->\n\n## Prerequisites\n\n### Infrastructure\n\n**Cluster**: This template requires an existing Kubernetes cluster\n\n**Container Image**: This template uses the [codercom/enterprise-base:ubuntu image](https://github.com/coder/enterprise-images/tree/main/images/base) with some dev tools preinstalled. To add additional tools, extend this image or build it yourself.\n\n### Authentication\n\nThis template authenticates using a `~/.kube/config`, if present on the server, or via built-in authentication if the Coder provisioner is running on Kubernetes with an authorized ServiceAccount. To use another [authentication method](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs#authentication), edit the template.\n\n## Architecture\n\nThis template provisions the following resources:\n\n- Kubernetes pod (ephemeral)\n- Kubernetes persistent volume claim (persistent on `/home/coder`)\n\nThis means, when the workspace restarts, any tools or files outside of the home directory are not persisted. To pre-bake tools into the workspace (e.g. `python3`), modify the container image. Alternatively, individual developers can [personalize](https://coder.com/docs/v2/latest/dotfiles) their workspaces with dotfiles.\n\n> **Note**\n> This template is designed to be a starting point! Edit the Terraform to extend the template to support your use case.\n", "user_variable_values": [{"name": "namespace", "description": "The Kubernetes namespace to create workspaces in (must exist prior to creating workspaces). If the Coder host is itself running as a Pod on the same Kubernetes cluster as you are deploying workspaces to, set this to the same namespace.", "type": "string", "value": "testprojecttf", "default_value": "", "required": true, "sensitive": false}, {"name": "use_kubeconfig", "description": "Use host kubeconfig? (true/false)\n\nSet this to false if the Coder host is itself running as a Pod on the same\nKubernetes cluster as you are deploying workspaces to.\n\nSet this to true if the Coder host is running outside the Kubernetes cluster\nfor workspaces.  A valid \"~/.kube/config\" must be present on the Coder host.\n", "type": "bool", "value": "false", "default_value": "false", "required": false, "sensitive": false}]}}
+{
+  "activity_bump_ms": 3600000,
+  "allow_user_autostart": true,
+  "allow_user_autostop": true,
+  "allow_user_cancel_workspace_jobs": false,
+  "autostart_requirement": {
+    "days_of_week": [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+      "sunday"
+    ]
+  },
+  "autostop_requirement": {
+    "days_of_week": [],
+    "weeks": 1
+  },
+  "created_by_id": "7ee0f745-ba3e-421e-aead-aab10a932b19",
+  "created_by_name": "service-user",
+  "default_ttl_ms": 86400000,
+  "deprecated": false,
+  "deprecation_message": "",
+  "description": "Provision Kubernetes Deployments as Coder workspaces",
+  "display_name": "Kubernetes (secret)",
+  "failure_ttl_ms": 0,
+  "icon": "/emojis/1f5e8.png",
+  "max_port_share_level": "owner",
+  "name": "kubernetes-secret",
+  "provisioner": "terraform",
+  "require_active_version": false,
+  "time_til_dormant_autodelete_ms": 0,
+  "time_til_dormant_ms": 0,
+  "version": {
+    "archived": false,
+    "message": "",
+    "name": "focused_cori9",
+    "readme": "---\ndisplay_name: Kubernetes (Deployment)\ndescription: Provision Kubernetes Deployments as Coder workspaces\nicon: ../../../site/static/icon/k8s.png\nmaintainer_github: coder\nverified: true\ntags: [kubernetes, container]\n---\n\n# Remote Development on Kubernetes Pods\n\nProvision Kubernetes Pods as [Coder workspaces](https://coder.com/docs/v2/latest/workspaces) with this example template.\n\n<!-- TODO: Add screenshot -->\n\n## Prerequisites\n\n### Infrastructure\n\n**Cluster**: This template requires an existing Kubernetes cluster\n\n**Container Image**: This template uses the [codercom/enterprise-base:ubuntu image](https://github.com/coder/enterprise-images/tree/main/images/base) with some dev tools preinstalled. To add additional tools, extend this image or build it yourself.\n\n### Authentication\n\nThis template authenticates using a `~/.kube/config`, if present on the server, or via built-in authentication if the Coder provisioner is running on Kubernetes with an authorized ServiceAccount. To use another [authentication method](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs#authentication), edit the template.\n\n## Architecture\n\nThis template provisions the following resources:\n\n- Kubernetes pod (ephemeral)\n- Kubernetes persistent volume claim (persistent on `/home/coder`)\n\nThis means, when the workspace restarts, any tools or files outside of the home directory are not persisted. To pre-bake tools into the workspace (e.g. `python3`), modify the container image. Alternatively, individual developers can [personalize](https://coder.com/docs/v2/latest/dotfiles) their workspaces with dotfiles.\n\n> **Note**\n> This template is designed to be a starting point! Edit the Terraform to extend the template to support your use case.\n",
+    "user_variable_values": [
+      {
+        "default_value": "",
+        "description": "The Kubernetes namespace to create workspaces in (must exist prior to creating workspaces). If the Coder host is itself running as a Pod on the same Kubernetes cluster as you are deploying workspaces to, set this to the same namespace.",
+        "name": "namespace",
+        "required": true,
+        "sensitive": false,
+        "type": "string",
+        "value": "testprojecttf"
+      },
+      {
+        "default_value": "false",
+        "description": "Use host kubeconfig? (true/false)\n\nSet this to false if the Coder host is itself running as a Pod on the same\nKubernetes cluster as you are deploying workspaces to.\n\nSet this to true if the Coder host is running outside the Kubernetes cluster\nfor workspaces.  A valid \"~/.kube/config\" must be present on the Coder host.\n",
+        "name": "use_kubeconfig",
+        "required": false,
+        "sensitive": false,
+        "type": "bool",
+        "value": "false"
+      }
+    ]
+  }
+}
